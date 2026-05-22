@@ -88,7 +88,7 @@ function toggleMenu() {
 
     <div class="form-group">
       <label for="email">Email ID <span class="required">*</span></label>
-      <input type="email" id="email" name="email" placeholder="Your Email ID" required>
+      <input type="email" id="email" name="email" placeholder="Your Email ID" pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$" required>
     </div>
 
     <div class="form-group">
@@ -390,13 +390,6 @@ function toggleMenu() {
 
     <p>© Madhumitha Govindarajan | Built with HTML & CSS | Hosted on Netlify</p>
   </footer>
-
-<div id="popupModal" class="popup-modal">
-  <div class="popup-content">
-    <p id="popupMessage"></p>
-    <button id="popupBtn">OK</button>
-  </div>
-</div>
 
   <script src="script.js"></script>
 </body>

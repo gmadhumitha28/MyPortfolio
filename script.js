@@ -1,13 +1,6 @@
-const popupModal = document.getElementById("popupModal");
-const popupMessage = document.getElementById("popupMessage");
-const popupBtn = document.getElementById("popupBtn");
-
 document.getElementById("contactForm").addEventListener("submit", async function(e) {
 
     e.preventDefault();
-
-    popupMessage.textContent = "⏳ Sending message...";
-    popupModal.style.display = "flex";
 
     const name = document.getElementById("name").value;
     const email = document.getElementById("email").value;
@@ -23,8 +16,7 @@ document.getElementById("contactForm").addEventListener("submit", async function
     // Validation
     if (!name || !email || !message) {
 
-        popupMessage.textContent =
-            "⚠️ Please fill out the mandatory fields.";
+        alert("⚠️ Please fill out the mandatory fields.");
 
         return;
     }
@@ -53,27 +45,17 @@ document.getElementById("contactForm").addEventListener("submit", async function
 
         if (data.success) {
 
-            popupMessage.textContent =
-                "✅ Message recieved successfully! I will contact you soon.";
+            alert("✅ Message recieved successfully! I will contact you soon.");
 
             this.reset();
 
         } else {
 
-            popupMessage.textContent =
-                "❌ Failed to send message. Try again.";
+            alert("❌ Failed to send message. Try again.");
         }
 
     } catch (error) {
 
-        popupMessage.textContent =
-            "❌ Error sending message.";
+        alert("❌ Error sending message.");
     }
-});
-
-/* CLOSE POPUP */
-popupBtn.addEventListener("click", function() {
-
-    popupModal.style.display = "none";
-
 });
