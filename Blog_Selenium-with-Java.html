@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Selenium with Java: A Complete Tutorial</title>
+<link rel="icon" type="image/png" href="logo.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header class='blog'>
+ <img src="Logo_Portfolio.png" class="profile-pic" alt="Profile">
+  <a href="content_portfolio.html" class="btn">⬅ Back</a>
+</header>
+  <h1 class="profile-heading">Selenium with Java: A Complete Tutorial</h1>
+<main>
+<p>
+    Selenium is an open-source tool which is most used in automation testing frameworks for web applications. It supports various programming languages, such as Java, Python, C#, and JavaScript. Java is one of the most popular choices among all, because of its robustness and extensive libraries. This article gives you a step-by-step guide on how to use Selenium with Java, consisting of installation, setup, writing test scripts, and best practices.
+  </p>
+  <h2>Introduction to Selenium</h2>
+  <p>
+    Selenium is a collection of tools and libraries for automating web browsers. It allows testers and developers to write automated test scripts to validate web applications. It can be integrated with other testing frameworks like TestNG, Junit for better organization of test cases. Selenium can run on different OS like Windows, Linux, and macOS. The following are the 4 components of Selenium Suite:
+  </p>
+  <ul>
+    <li><b>Selenium IDE</b>: A browser extension for recording and running scripts.</li>
+    <li><b>Selenium RC</b>: The main automation tool that directly interacts with web browsers using programming languages.</li>
+    <li><b>Selenium WebDriver</b>: Upgraded version of Selenium RC, which interacts with web drivers.</li>
+    <li><b>Selenium Grid</b>: Enables parallel execution of tests across different browsers and machines.</li>
+  </ul>
+
+  <h2>Why Use Java with Selenium?</h2>
+<p>Java is one of the most preferred languages for Selenium automation due to:</p>
+  <ul>
+    <li>Strong community support: Java has extensive documentation and a large developer community.</li>
+    <li>Robust libraries: Java provides powerful libraries like TestNG and JUnit for test execution.</li>
+    <li>Cross-platform compatibility: Java runs on multiple OS without modification.</li>
+    <li>Integration with frameworks: Java easily integrates with frameworks like Maven, Cucumber, and Jenkins.</li>
+  </ul>
+
+  <h2>Prerequisites for using Selenium with Java</h2>
+<p>Before starting, ensure you have the following installed:</p>
+  <ul>
+    <li>Eclipse IDE (Eclipse IDE has a built-in version of JDK, hence no need to install Java separately).</li>
+    <li>Maven</li>
+    <li>Browser drivers (e.g., ChromeDriver for Google Chrome)</li>
+  </ul>
+
+  <h2>Setting Up Selenium with Java (Using Maven)</h2>
+<p>After installing Eclipse,</p>
+  <ol>
+    <li>Open the Eclipse IDE in your system.</li>
+    <li>Go to File > New > Maven Project.</li>
+    <li>Click on Finish to create your project after entering required details.</li>
+    <li>Add the following dependency to your <i>pom.xml</i> file:</li>
+  </ol>
+
+  <code>
+  &lt;dependencies&gt;<br>
+   &nbsp; &lt;dependency&gt;<br>
+   &nbsp;&nbsp; &nbsp;  &lt;groupId&gt;org.seleniumhq.selenium&lt;/groupId&gt;<br>
+   &nbsp;&nbsp;&nbsp; &nbsp;  &lt;artifactId&gt;selenium-java&lt;/artifactId&gt;<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;   &lt;version&gt;4.8.0&lt;/version&gt;<br>
+  &nbsp;  &lt;/dependency&gt;<br>
+  &lt;/dependencies&gt;
+  </code>
+
+<p>After adding the dependency, update your Maven project to download the required libraries.</p>
+
+  <h3>Let’s begin with writing a Basic Selenium Test Script in Java</h3>
+
+<p>Create a new package in the folder <i>src/main/java</i> in the newly created Maven Project and then create a new class inside that package.</p>
+<p>1. Import Required Packages in that class</p>
+
+  <code>
+  import org.openqa.selenium.WebDriver;<br>
+  import org.openqa.selenium.chrome.ChromeDriver;<br>
+  </code>
+
+<p>2.Initialize WebDriver and Launch Browser</p>
+  <code>
+  public class SeleniumTest {<br>
+  &nbsp;&nbsp;public static void main(String[] args) {<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;System.setProperty("webdriver.chrome.driver","<i>**path in which chromedriver is placed**</i>");<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;WebDriver driver = new ChromeDriver();<br><br>
+  &nbsp;&nbsp;&nbsp;&nbsp;driver.get("https://www.google.com");<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;System.out.println("Page Title: " + driver.getTitle());<br><br>
+  &nbsp;&nbsp;&nbsp;&nbsp;driver.quit();<br>
+  &nbsp;&nbsp;}<br>
+  }
+  </code>
+
+<h3>How does it work??</h3>
+<ul>
+    <li><i>System.setProperty()</i> sets the location of the WebDriver.</li>
+    <li><i>WebDriver driver = new ChromeDriver();</i> initializes the Chrome browser.</li>
+    <li><i>driver.get()</i> opens the given URL.</li>
+    <li><i>driver.getTitle()</i> fetches the webpage title.</li>
+    <li><i>driver.quit()</i> closes the browser.</li>
+  </ul>
+
+  <h2>Locating Web Elements in Selenium</h2>
+  <p>Selenium provides various locators to identify web elements. They are:</p>
+  <ul>
+    <li><strong>ID:</strong> <code>driver.findElement(By.id("<i>elementID</i>"));</code></li>
+    <li><strong>Name:</strong> <code>driver.findElement(By.name("<i>elementName</i>"));</code></li>
+    <li><strong>Class Name:</strong> <code>driver.findElement(By.className("<i>className</i>"));</code></li>
+    <li><strong>CSS Selector:</strong> <code>driver.findElement(By.cssSelector("<i>cssSelector</i>"));</code></li>
+    <li><strong>XPath:</strong> <code>driver.findElement(By.xpath("<i>XPathExpression</i>"));</code></li>
+    <li><strong>Link Text:</strong> <code>driver.findElement(By.linkText("<i>linkText</i>"));</code></li>
+    <li><strong>Partial Link Text:</strong> <code>driver.findElement(By.partialLinkText("<i>partialLinkText</i>"));</code></li>
+    <li><strong>Tag Name:</strong> <code>driver.findElement(By.tagName("<i>tagName</i>"));</code></li>
+  </ul>
+
+<h3>Code Example: Locating Elements</h3>
+
+<code>
+  import org.openqa.selenium.By;<br>
+  import org.openqa.selenium.WebDriver;<br>
+  import org.openqa.selenium.WebElement;<br>
+  import org.openqa.selenium.chrome.ChromeDriver;<br><br>
+
+  public class LocateElement {<br>
+  &nbsp;&nbsp;public static void main(String[] args) {<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;System.setProperty("webdriver.chrome.driver", "<i>path/to/chromedriver</i>");<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;WebDriver driver = new ChromeDriver();<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;driver.get("https://www.google.com");<br><br>
+  &nbsp;&nbsp;&nbsp;&nbsp;WebElement searchBox = driver.findElement(By.id("input"));<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;searchBox.sendKeys("Search box Located");<br><br>
+  &nbsp;&nbsp;&nbsp;&nbsp;driver.quit();<br>
+  &nbsp;&nbsp;}<br>
+  }
+  </code>
+
+  <h2>Handling Alerts and Pop-ups in Selenium</h2>
+<p>Selenium has an in-built Alert interface to handle JavaScript pop-ups or alerts. Given below is a code example on how to handle alerts in Selenium with Java.</p>
+  <code>
+  import org.openqa.selenium.Alert;<br>
+  import org.openqa.selenium.By;<br>
+  import org.openqa.selenium.WebDriver;<br>
+  import org.openqa.selenium.chrome.ChromeDriver;<br><br>
+
+  public class AlertHandling {<br>
+  &nbsp;&nbsp;public static void main(String[] args) {<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;System.setProperty("webdriver.chrome.driver", "<i>path/to/chromedriver</i>");<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;WebDriver driver = new ChromeDriver();<br><br>
+  &nbsp;&nbsp;&nbsp;&nbsp;driver.get("https://www.selenium.dev/documentation/webdriver/interactions/alerts/");<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;driver.findElement(By.xpath("//a[contains(text(),'See an example')]")).click();<br><br>
+  &nbsp;&nbsp;&nbsp;&nbsp;Alert alert = driver.switchTo().alert();<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;System.out.println(alert.getText());<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;alert.accept();<br><br>
+  &nbsp;&nbsp;&nbsp;&nbsp;driver.quit();<br>
+  &nbsp;&nbsp;}<br>
+  }
+  </code>
+
+  <h2>Working with Dropdowns in Selenium</h2>
+<p>To handle dropdown menus, the Select class can be used. Check out the below example for a better understanding of handling dropdowns.</p>
+
+  <code>
+  import org.openqa.selenium.By;<br>
+  import org.openqa.selenium.WebDriver;<br>
+  import org.openqa.selenium.WebElement;<br>
+  import org.openqa.selenium.chrome.ChromeDriver;<br>
+  import org.openqa.selenium.support.ui.Select;<br><br>
+
+  public class DropdownHandling {<br>
+  &nbsp;&nbsp;public static void main(String[] args) {<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;System.setProperty("webdriver.chrome.driver", "<i>path/to/chromedriver</i>");<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;WebDriver driver = new ChromeDriver();<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;driver.get("https://www.bstackdemo.com/");<br><br>
+  &nbsp;&nbsp;&nbsp;&nbsp;WebElement dropdownElement = driver.findElement(By.xpath("//select"));<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;Select dropdown = new Select(dropdownElement);<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;dropdown.selectByVisibleText("Lowest to highest");<br><br>
+  &nbsp;&nbsp;&nbsp;&nbsp;driver.quit();<br>
+  &nbsp;&nbsp;}<br>
+  }
+  </code>
+
+  <h2>Running Tests with TestNG</h2>
+  <p>TestNG is a testing framework that supports parallel execution and with the help of annotations we can indicate the type of test, pass parameters to test methods, and more.</p>
+<h3>How to Install TestNG (For Maven Users)</h3>
+
+  <p>Add the following dependency in <i>pom.xml</i>:</p>
+
+  <code>
+  &lt;dependency&gt;<br>
+    &lt;groupId&gt;org.testng&lt;/groupId&gt;<br>
+    &nbsp;&nbsp;&lt;artifactId&gt;testng&lt;/artifactId&gt;<br>
+   &nbsp;&nbsp;&nbsp;&nbsp; &lt;version&gt;7.4.0&lt;/version&gt;<br>
+   &nbsp;&nbsp; &lt;scope&gt;test&lt;/scope&gt;<br>
+  &lt;/dependency&gt;
+  </code>
+
+  <h3>Writing a TestNG Test Case</h3>
+  <code>
+  import org.openqa.selenium.WebDriver;<br>
+import org.openqa.selenium.chrome.ChromeDriver;<br>
+import org.testng.annotations.AfterClass;<br>
+import org.testng.annotations.BeforeClass;<br>
+import org.testng.annotations.Test;<br><br>
+
+  public class TestNGExample {<br>
+  &nbsp;&nbsp;WebDriver driver;<br><br>
+  &nbsp;&nbsp;@BeforeClass<br>
+  &nbsp;&nbsp;public void setup() {<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;System.setProperty("webdriver.chrome.driver", "<i>path/to/chromedriver</i>");<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;driver = new ChromeDriver();<br>
+  &nbsp;&nbsp;}<br><br>
+  &nbsp;&nbsp;@Test<br>
+  &nbsp;&nbsp;public void openGoogle() {<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;driver.get("https://www.google.com");<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;System.out.println("Page Title: " + driver.getTitle());<br>
+  &nbsp;&nbsp;}<br><br>
+  &nbsp;&nbsp;@AfterClass<br>
+  &nbsp;&nbsp;public void quitBrowser() {<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;driver.quit();<br>
+  &nbsp;&nbsp;}<br>
+  }
+  </code>
+
+  <h2>Conclusion</h2>
+  <p>
+    Selenium combined with Java offers a powerful method for automating web testing. It covers everything from simple browser tasks to managing alerts, dropdown menus, and parallel execution of tests, making Selenium a vital resource for testers. By incorporating TestNG, Maven, and frameworks such as Cucumber, you can develop scalable automation solutions.
+  </p>
+
+<div class="block">
+<span class="author"> ✍️ <a href="https://www.linkedin.com/in/madhumitha-govindarajan/" target="_blank">Madhumitha Govindarajan</a></span>
+</div>
+<style>
+  .block {
+    text-align: right;
+    margin-bottom: 1rem;
+  }
+  .author {
+    display: block;
+    color: #555555;
+    font-weight: 600;
+    font-style: italic;
+    font-size: 0.95rem;
+  }
+.author a {
+    color: #555555;
+    text-decoration: none; 
+  }
+  .author a:hover {
+    text-decoration: underline;
+  }
+</style>
+</main>
+
+
+<footer>
+  <p>© Madhumitha Govindarajan | Selenium with Java Blog</p>
+</footer>
+
+</body>
+</html>
