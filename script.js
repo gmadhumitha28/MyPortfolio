@@ -1,36 +1,76 @@
-document.getElementById("contactForm").addEventListener("submit", async function (e) {
+document.getElementById("contactForm").addEventListener("submit", async function(e) {
 
-    const formStatus = document.getElementById("formStatus");
+    e.preventDefault();
+
+    const formStatus = document.getElementById("status");
+
     formStatus.textContent = "⏳ Sending message...";
     formStatus.style.color = "#060d6d";
 
+    const name = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+
+    const mobile =
+        "+" +
+        document.getElementById("country-code").value +
+        "-" +
+        document.getElementById("mobile").value;
+
+    const message = document.getElementById("message").value;
+
+    // Validation
+    if (!name || !email || !message) {
+
+        formStatus.innerHTML =
+            "<p style='color:red'>⚠️ Please fill out the mandatory fields.</p>";
+
+        return;
+    }
+
     const formData = {
-        name: this.name.value,
-        email: this.email.value,
-        mobile: this.mobile.value,
-        message: this.message.value
+        name,
+        email,
+        mobile,
+        message
     };
 
-    if (!name || !email || !message) {
-      formMessage.innerHTML = "<p style='color:red'>❌ Please fill out the mandatory fields.</p>";
-      return;
-    }
+    try {
 
-    const res = await fetch("/.netlify/functions/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData)
-    });
+        const res = await fetch("/.netlify/functions/sendMail", {
 
-    const data = await res.json();
+            method: "POST",
 
-    if (data.success) {
-        formStatus.style.color = "green";
-        formStatus.textContent = "✅ Message sent successfully! I will contact you soon.";
-        this.reset();
-    } else {
+            headers: {
+                "Content-Type": "application/json"
+            },
+
+            body: JSON.stringify(formData)
+        });
+
+        const data = await res.json();
+
+        if (data.success) {
+
+            formStatus.style.color = "green";
+
+            formStatus.textContent =
+                "✅ Message recieved successfully! I will contact you soon.";
+
+            this.reset();
+
+        } else {
+
+            formStatus.style.color = "red";
+
+            formStatus.textContent =
+                "❌ Failed to send message. Try again.";
+        }
+
+    } catch (error) {
+
         formStatus.style.color = "red";
-        formStatus.textContent = "❌ Failed to send message. Try again.";
+
+        formStatus.textContent =
+            "❌ Error sending message.";
     }
 });
-
