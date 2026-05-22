@@ -1,11 +1,13 @@
+const popupModal = document.getElementById("popupModal");
+const popupMessage = document.getElementById("popupMessage");
+const popupBtn = document.getElementById("popupBtn");
+
 document.getElementById("contactForm").addEventListener("submit", async function(e) {
 
     e.preventDefault();
 
-    const formStatus = document.getElementById("status");
-
-    formStatus.textContent = "⏳ Sending message...";
-    formStatus.style.color = "#060d6d";
+    popupMessage.textContent = "⏳ Sending message...";
+    popupModal.style.display = "flex";
 
     const name = document.getElementById("name").value;
     const email = document.getElementById("email").value;
@@ -21,8 +23,8 @@ document.getElementById("contactForm").addEventListener("submit", async function
     // Validation
     if (!name || !email || !message) {
 
-        formStatus.innerHTML =
-            "<p style='color:red'>⚠️ Please fill out the mandatory fields.</p>";
+        popupMessage.textContent =
+            "⚠️ Please fill out the mandatory fields.";
 
         return;
     }
@@ -51,26 +53,27 @@ document.getElementById("contactForm").addEventListener("submit", async function
 
         if (data.success) {
 
-            formStatus.style.color = "green";
-
-            formStatus.textContent =
+            popupMessage.textContent =
                 "✅ Message recieved successfully! I will contact you soon.";
 
             this.reset();
 
         } else {
 
-            formStatus.style.color = "red";
-
-            formStatus.textContent =
+            popupMessage.textContent =
                 "❌ Failed to send message. Try again.";
         }
 
     } catch (error) {
 
-        formStatus.style.color = "red";
-
-        formStatus.textContent =
+        popupMessage.textContent =
             "❌ Error sending message.";
     }
+});
+
+/* CLOSE POPUP */
+popupBtn.addEventListener("click", function() {
+
+    popupModal.style.display = "none";
+
 });
