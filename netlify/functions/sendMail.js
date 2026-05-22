@@ -14,11 +14,11 @@ export async function handler(event) {
     const resend = new Resend(process.env.RESEND_API_KEY);
 
    const data = await resend.emails.send({
-      from: "Madhumitha Portfolio <Portfolio@resend.dev>",
+      from: "Madhumitha Portfolio <portfolio@resend.dev>",
       to: "gmadhumitha.official@gmail.com",
-      subject: `Portfolio Message from ${name}`,
+      subject: `New Portfolio Message from ${name}`,
       html: `
-        <h2>New Contact Form Submission</h2>
+        <h2>Contact Form Data</h2>
         <p><strong>Name:</strong> ${name}</p>
         <p><strong>Email:</strong> ${email}</p>
         <p><strong>Mobile:</strong> ${mobile}</p>
