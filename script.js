@@ -5,11 +5,14 @@ document.getElementById("contactForm").addEventListener("submit", async function
     const name = document.getElementById("name").value;
     const email = document.getElementById("email").value;
 
-    const mobile =
-        "+" +
+    const mobileInput = document.getElementById("mobile").value;
+	let mobile = "";
+
+	if (mobileInput.trim() !== "") {
+    	mobile = "+" +
         document.getElementById("country-code").value +
-        "-" +
-        document.getElementById("mobile").value;
+        "-" + mobileInput;
+}
 
     const message = document.getElementById("message").value;
 
