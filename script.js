@@ -1,3 +1,9 @@
+document.querySelectorAll(".nav-links a").forEach(link => {
+    link.addEventListener("click", () => {
+        document.getElementById("mobileMenu").classList.remove("show");
+    });
+});
+
 document.getElementById("contactForm").addEventListener("submit", async function(e) {
 
     e.preventDefault();

@@ -274,7 +274,7 @@ a.btn:hover {
 
 .form-group input,
 .form-group textarea {
-  width: 95%;
+  width: 97%;
   font-family: 'Inter', sans-serif;
   padding: 0.8rem;
   border: 1px solid #cfd8ff;
@@ -370,6 +370,9 @@ footer p {
   font-size: 0.8rem;
 }
 
+  /* ===== MOBILE ===== */
+
+
 @media (max-width: 768px) {
 
   body {
@@ -391,24 +394,50 @@ footer p {
         display: block;
     }
 
-    .nav-links {
-        display: none;
-        flex-direction: column;
-        width: 100%;
-        padding: 15px 0;
-        border-top: 2px solid #ddd;
-        margin-top: 10px;
-    }
+.nav-links {
+    display: none;
 
-    .nav-links a {
-        padding: 10px 0;
-        font-size: 16px;
-    }
+    position: absolute;
 
-    /* Show menu when active */
-    .nav-links.show {
-        display: flex;
-    }
+    top: 55px;       /* below hamburger */
+    right: 15px;
+
+    width: 180px;
+
+    background: white;
+
+    border-radius: 10px;
+
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+
+    padding: 10px 0;
+
+    z-index: 9999;
+}
+
+.nav-links.show {
+    display: flex;
+    flex-direction: column;
+}
+
+.nav-links.show a{
+    display:block;
+    width:100%;
+
+    text-align:center !important;
+
+    padding:14px 0;
+
+    margin:0;
+
+    justify-content:center;
+
+    border-bottom:1px solid #eee;
+}
+
+.nav-links.show a:last-child{
+    border-bottom:none;
+}
 
   /* ===== FORM SECTION ===== */
   .contact-form {
@@ -418,9 +447,10 @@ footer p {
     border-radius: 8px;
   }
 
+
   .contact-form input,
   .contact-form textarea {
-    width: 100% !important;
+    width: 93% !important;
     font-size: 15px;
   }
 
@@ -434,17 +464,33 @@ footer p {
   }
 
   /* ===== FOOTER ===== */
-  footer {
+  .contact-grid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    width: 100%;
+    padding: 0;
+  }
+
+  .contact-item {
     width: 100%;
     text-align: center;
-    padding: 20px 10px;
-    background: linear-gradient(90deg, #ffd3d0, #b3d8ff);
   }
-  .contact-grid {
-    flex-direction: column;
-    text-align: center;
-    gap: 20px;
+
+  .contact-item a {
+    display: block;
+    width: 100%;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
   }
+
+  footer {
+    width: 100%;
+    padding: 20px 15px;
+    box-sizing: border-box;
+  }
+
   footer p,
   footer a {
     font-size: 14px;
