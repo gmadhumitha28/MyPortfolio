@@ -3,169 +3,124 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Madhumitha Portfolio</title>
+  <title>Madhumitha | Portfolio</title>
   <link rel="stylesheet" href="style.css">
 
-<!-- Meta Image for Social & SEO Preview -->
-<meta property="og:image" content="logo.png">
-<meta property="og:image:type" content="image/png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="icon" type="image/png" href="logo.png">
-
+  <meta property="og:image" content="logo.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/png" href="logo.png">
+</head>
 <body>
-<header class="main-header">
 
-  <img src="Logo_Portfolio.png" class="profile-pic" alt="Profile">
-
-  <!-- Hamburger Icon -->
-  <div class="hamburger" onclick="toggleMenu()">☰</div>
-
-  <!-- Navigation Menu -->
-  <nav class="nav-links" id="mobileMenu">
+  <header class="main-header">
+    <img src="Logo_Portfolio.png" class="profile-pic" alt="Madhumitha Profile Picture">
+    <div class="hamburger" onclick="toggleMenu()" aria-label="Toggle navigation menu" role="button" tabindex="0">☰</div>
+    <nav class="nav-links" id="mobileMenu">
       <a href="#about">📌 About Me</a>
       <a href="#whatIdo">💼 What I Do</a>
       <a href="#contact">📩 Contact</a>
-  </nav>
+    </nav>
+  </header>
 
-</header>
+  <main>
+    <section class="sub-section">
+      <h1>Delivering Quality - In Code, In Content, In Experience</h1>
+      <p>
+        Hello, I'm Madhumitha. I’m a QA Analyst and Content Creator who loves blending logic with creativity.
+        Whether I’m designing an automation script or writing an article, my ultimate goal remains the same: delivering flawless quality.
+      </p>
+    </section>
 
-<script>
-function toggleMenu() {
-    document.getElementById("mobileMenu").classList.toggle("show");
-}
-</script>
+    <section id="about" class="about-me">
+      <h2>About Me</h2>
+      <ul>
+        <li>I enjoy bringing my software testing expertise to creative teams to help ship reliable, top-tier applications.</li>
+        <li>With a strong background in Java, Selenium, and standard QA methodologies, I focus heavily on ensuring robust software health and meeting core product requirements.</li>
+        <li>Beyond testing, I specialize in Technical Content Writing—crafting engaging, clear tutorials that simplify complex QA and automation topics for engineering teams.</li>
+      </ul>
+    </section>
 
-<section class="sub-section">
-    <h1>Delivering Quality - In Code, In Content, In Experience</h1>
-    <p>Hello, This is Madhumitha. I’m a <strong> QA Analyst and Content Creator </strong> who loves blending logic with creativity.</p>
-    <p>Whether I’m designing a script or writing an article, my ultimate goal is always the same - delivering quality software or content.</p>
-  </section>
+    <section id="whatIdo" class="domains-container">
+      <h2 class="section-heading">What I Do</h2>
+      <div class="domains">
+        <div class="card">
+          <h3>✅ Quality Assurance</h3>
+          <p>Building confidence in every release through thorough functional and automated testing pipelines.</p>
+          <a href="qa_portfolio.html" class="btn">Explore QA</a>
+        </div>
+        <div class="card">
+          <h3>✍️ Content Writing</h3>
+          <p>Translating complex architectural concepts and QA frameworks into highly accessible documentation.</p>
+          <a href="content_portfolio.html" class="btn">Explore Content Writing</a>
+        </div>
+      </div>
+    </section>
 
-<main id="about" class="about-me">
-  <h2>About Me</h2>
-  <ul>
-    <li>
-      I aspire to use my expertise and enthusiasm for <strong>Software Testing</strong> to support a creative team and guarantee the delivery of <strong>high quality applications</strong>.
-    </li>
-    <li>
-      Through my expertise in <strong>Java</strong>, <strong>Selenium</strong>, and <strong>software testing processes</strong> I assure the quality of the software and meet client requirements.
-    </li>
-    <li>
-     In addition to testing, I also am passionate about <strong>Technical Content Writing</strong>. I write simple and engaging content that help professionals and businesses understand the QA topics with ease.
-    </li>
-  </ul>
-</main>
+    <section id="contact" class="contact-form">
+      <h2>Contact Me</h2>
+      <p>Ready to collaborate or chat about open roles? Send over a message and I'll get right back to you!</p>
 
-<h2 id="whatIdo" class="section-heading">What I Do</h2>
-  <section class="domains">
-  <div class="card">
-    <h2>✅ Quality Assurance</h2>
-    <p>Building confidence in every release through detailed testing</p>
-    <a href="qa_portfolio.html" class="btn">Explore QA</a>
-  </div>
+      <form id="contactForm">
+        <input type="hidden" name="form-name" value="contact">
+        
+        <div class="form-group">
+          <label for="name">Name <span class="required">*</span></label>
+          <input type="text" id="name" name="name" placeholder="Your Name" pattern="[A-Za-z\s'\-]{2,50}" title="Please enter a valid name." required>
+        </div>
 
-  <div class="card">
-    <h2>✍️ Content Writing</h2>
-    <p>Turning technical QA topics into simple and engaging stories</p>
-    <a href="content_portfolio.html" class="btn">Explore Content Writing</a>
-  </div>
-</section>
+        <div class="form-group">
+          <label for="email">Email ID <span class="required">*</span></label>
+          <input type="email" id="email" name="email" placeholder="Your Email ID" required>
+        </div>
 
-<section id="contact" class="contact-form">
-  <h2>Contact Me</h2>
-  <p>Ready to collaborate? Send a message with your details. I look forward to connecting with you!!</p>
+        <div class="form-group">
+          <label for="mobile">Contact Number</label>
+          <div class="phone-group">
+            <select id="country-code" name="countryCode">
+              <option value="91" selected>+91 India</option>
+              <option value="1">+1 USA</option>
+              <option value="1">+1 Canada</option>
+              <option value="44">+44 UK</option>
+              <option value="61">+61 Australia</option>
+              <option value="65">+65 Singapore</option>
+              <option value="49">+49 Germany</option>
+            </select>
+            <input type="tel" id="mobile" name="contact" placeholder="Your Contact Number" pattern="[0-9]{7,12}" title="Enter a valid phone number (7-12 digits).">
+          </div>
+        </div>
 
- <form id="contactForm">
-    <input type="hidden" name="form-name" value="contact">
-    
-    <div class="form-group">
-      <label for="name">Name <span class="required">*</span></label>
-      <input type="text" id="name" name="name" placeholder="Your Name" pattern="[A-Za-z\s'\-]{2,50}"  title="Enter a valid name (Use only A-Z)." required>
-    </div>
+        <div class="form-group">
+          <label for="message">Message <span class="required">*</span></label>
+          <textarea id="message" name="message" rows="5" placeholder="Write your message here..." required></textarea>
+        </div>
 
-    <div class="form-group">
-      <label for="email">Email ID <span class="required">*</span></label>
-      <input type="email" id="email" name="email" placeholder="Your Email ID" pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$" title="Enter a valid email address (Example: name@xyz.com)." required>
-    </div>
-
-    <div class="form-group">
-      <label for="mobile">Contact Number</label>
-
-    <div class="phone-group">
-
-      <select id="country-code" name="countryCode">
-     	<option value="91" selected>+91 India</option>
-
-<option value="1">+1 United States</option>
-<option value="1">+1 Canada</option>
-<option value="44">+44 United Kingdom</option>
-<option value="353">+353 Ireland</option>
-<option value="61">+61 Australia</option>
-<option value="64">+64 New Zealand</option>
-<option value="971">+971 United Arab Emirates</option>
-<option value="966">+966 Saudi Arabia</option>
-<option value="974">+974 Qatar</option>
-<option value="968">+968 Oman</option>
-<option value="973">+973 Bahrain</option>
-<option value="965">+965 Kuwait</option>
-<option value="65">+65 Singapore</option>
-<option value="60">+60 Malaysia</option>
-<option value="49">+49 Germany</option>
-<option value="33">+33 France</option>
-<option value="31">+31 Netherlands</option>
-<option value="41">+41 Switzerland</option>
-<option value="46">+46 Sweden</option>
-<option value="81">+81 Japan</option>
-<option value="82">+82 South Korea</option>
-<option value="27">+27 South Africa</option>
-<option value="94">+94 Sri Lanka</option>
-<option value="880">+880 Bangladesh</option>
-<option value="977">+977 Nepal</option>
-      </select>
-
-      <input type="tel" id="mobile" name="contact" placeholder="Your Contact Number" pattern="[0-9]{7,12}" title="Enter a valid mobile number (7-12 digits only).">
-    </div>
-</div>
-
-    <div class="form-group">
-      <label for="message">Message <span class="required">*</span></label>
-      <textarea id="message" name="message" rows="5" placeholder="Write your message..." required></textarea>
-    </div>
-
-    <button type="submit" class="btn">Send Message</button>
-    <p class="mandatory-key">Fields marked with a <span class="required">(*)</span> are mandatory</p>
-
-  </form>
-</section>
+        <button type="submit" class="btn">Send Message</button>
+        <p class="mandatory-key">Fields marked with <span class="required">(*)</span> are required</p>
+      </form>
+    </section>
+  </main>
 
   <footer>
-  <p class="contact-intro">
-   <i>I’d love to hear from you. Whether it's about QA, content writing, or collaboration – send a quick message.</i>
-  </p>
-
-  <div class="contact-grid">
-    
-    <div class="contact-item">
-      <h3>LinkedIn</h3>
-      <a href="https://www.linkedin.com/in/madhumitha-govindarajan/" target="_blank">
-        https://www.linkedin.com/in/madhumitha-govindarajan/
-      </a>
+        <div class="contact-grid">
+      <div class="contact-item">
+        <h3>LinkedIn</h3>
+        <a href="https://www.linkedin.com/in/madhumitha-govindarajan/" target="_blank" rel="noopener noreferrer">https://www.linkedin.com/in/madhumitha-govindarajan</a>
+      </div>
+      <div class="contact-item">
+        <h3>Email</h3>
+        <a href="mailto:gmadhumitha.official@gmail.com">gmadhumitha.official@gmail.com</a>
+      </div>
     </div>
-
-    <div class="contact-item">
-      <h3>Email ID</h3>
-      <a href="mailto:gmadhumitha.official@gmail.com" target="_blank">
-        gmadhumitha.official@gmail.com
-      </a>
-    </div>
-  </div>
-
-    <p>© Madhumitha Govindarajan | Built with HTML & CSS | Hosted on Netlify</p>
+    <p>© 2026 Madhumitha G | Built with HTML & CSS | Hosted on Netlify</p>
   </footer>
 
-  <script src="script.js"></script>
+  <script>
+    function toggleMenu() {
+      document.getElementById("mobileMenu").classList.toggle("show");
+    }
+  </script>
 </body>
 </html>
