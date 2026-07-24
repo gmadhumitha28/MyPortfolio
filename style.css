@@ -250,6 +250,12 @@ header h1 {
   flex: 1 !important;
 }
 
+.exp-left-col > *:first-child,
+.exp-right-col > *:first-child {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
 .job-title {
   font-size: 1.25rem;
   color: #060d6d;
